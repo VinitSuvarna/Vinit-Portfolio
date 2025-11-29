@@ -215,7 +215,7 @@ const skillGroups = [
   },
   {
     category: "Tools & Platforms",
-    items: ["GitHub", "VS Code", "MongoDB"]
+    items: ["GitHub", "VS Code", "MongoDB", "Anaconda"]
   }
 ];
 
