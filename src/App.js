@@ -203,7 +203,7 @@ const projects = [
 const skillGroups = [
   {
     category: "Languages & Core",
-    items: ["Python", "JavaScript", "SQL (Beginner)", "HTML / CSS"]
+    items: ["Python", "JavaScript", "C", "SQL (Beginner)", "HTML / CSS"]
   },
   {
     category: "Frameworks & Libraries",
@@ -211,7 +211,7 @@ const skillGroups = [
   },
   {
     category: "Data & Analytics",
-    items: ["Tableau", "Data Visualization", "Excel"]
+    items: ["Tableau", "Power-BI", "Excel", "Pandas", "Matplotlib"]
   },
   {
     category: "Tools & Platforms",
