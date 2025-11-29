@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Vinit-Portfolio/static/css/main.e9ffcc05.css",
-    "main.js": "/Vinit-Portfolio/static/js/main.2ec81382.js",
-    "index.html": "/Vinit-Portfolio/index.html",
-    "main.e9ffcc05.css.map": "/Vinit-Portfolio/static/css/main.e9ffcc05.css.map",
-    "main.2ec81382.js.map": "/Vinit-Portfolio/static/js/main.2ec81382.js.map"
+    "main.css": "/static/css/main.5ecda9a9.css",
+    "main.js": "/static/js/main.7ba871c8.js",
+    "index.html": "/index.html",
+    "main.5ecda9a9.css.map": "/static/css/main.5ecda9a9.css.map",
+    "main.7ba871c8.js.map": "/static/js/main.7ba871c8.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9ffcc05.css",
-    "static/js/main.2ec81382.js"
+    "static/css/main.5ecda9a9.css",
+    "static/js/main.7ba871c8.js"
   ]
 }
