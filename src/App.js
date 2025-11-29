@@ -73,6 +73,34 @@ const projects = [
     codeLink: "https://github.com/VinitSuvarna/AI-Chatbot"
   },
   {
+    title: "BVOC Course Website",
+    slug: "bvoc-course-website",
+    tech: "HTML, CSS, JavaScript",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    description:
+      "A dedicated course website for the B.Voc program with multiple pages for courses, admissions, faculty, events, and more.",
+    overview:
+      "A responsive static website built for the B.Voc program, covering course details, growth & career paths, online application form, and multimedia sections.",
+    buildSteps: [
+      "Designed the overall information architecture for different B.Voc pages (courses, admissions, alumni, events, faculty, etc.).",
+      "Implemented responsive layouts using HTML and CSS for desktop and mobile.",
+      "Added JavaScript for navigation interactions and page-specific behaviors.",
+      "Optimized images and content for better loading and readability."
+    ],
+    challenges: [
+      "Keeping the design consistent across many separate HTML pages.",
+      "Managing navigation and links between multiple course and info sections.",
+      "Ensuring the layout works well on different screen sizes."
+    ],
+    learnings: [
+      "Stronger understanding of multi-page site structure.",
+      "Improved skills in clean, organized HTML/CSS.",
+      "Experience building an academic / institutional site layout."
+    ],
+    demoLink: "https://VinitSuvarna.github.io/BVOC-Website/",
+    codeLink: "https://github.com/VinitSuvarna/BVOC-Website"
+  },
+  {
     title: "Food App",
     slug: "food-app",
     tech: "Django, Python, Bootstrap, JavaScript, SQLite, PayPal API",
@@ -171,21 +199,24 @@ const projects = [
 // ---------------------------
 // SKILLS & CERTIFICATIONS
 // ---------------------------
-const skills = [
-  "JavaScript",
-  "React",
-  "HTML / CSS",
-  "Python",
-  "Django",
-  "REST API",
-  "Streamlit",
-  "Tableau",
-  "MongoDB",
-  "Data Visualization",
-  "SQL (Beginner)",
-  "GitHub",
-  "VS Code",
-  "Excel"
+
+const skillGroups = [
+  {
+    category: "Languages & Core",
+    items: ["Python", "JavaScript", "SQL (Beginner)", "HTML / CSS"]
+  },
+  {
+    category: "Frameworks & Libraries",
+    items: ["React", "Django", "REST API", "Streamlit"]
+  },
+  {
+    category: "Data & Analytics",
+    items: ["Tableau", "Data Visualization", "Excel"]
+  },
+  {
+    category: "Tools & Platforms",
+    items: ["GitHub", "VS Code", "MongoDB"]
+  }
 ];
 
 const certifications = [
@@ -310,13 +341,15 @@ function App() {
   const [activeSection, setActiveSection] = useState("top");
   const [showIntro, setShowIntro] = useState(true);
 
+  const resumeUrl = `${process.env.PUBLIC_URL}/VINIT-SUVARNA-CV.pdf`;
+
   // Intro auto hide
   useEffect(() => {
     const timer = setTimeout(() => setShowIntro(false), 2200);
     return () => clearTimeout(timer);
   }, []);
 
-  // Focus cursor (desktop)
+  // Focus cursor (desktop only)
   useEffect(() => {
     if (window.matchMedia && !window.matchMedia("(pointer: fine)").matches) {
       return;
@@ -350,7 +383,6 @@ function App() {
         "experience",
         "education",
         "certifications",
-        "resume",
         "contact"
       ];
       let current = "top";
@@ -396,6 +428,12 @@ function App() {
     setIsMobileNavOpen(false);
   };
 
+  const handleResumeClick = (e) => {
+    e.preventDefault();
+    window.open(resumeUrl, "_blank", "noopener,noreferrer");
+    setIsMobileNavOpen(false);
+  };
+
   // Magnetic hover for project cards (desktop)
   const handleProjectMouseMove = (e) => {
     const card = e.currentTarget;
@@ -405,7 +443,7 @@ function App() {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const moveX = ((x - centerX) / centerX) * 10; // max ~10px
+    const moveX = ((x - centerX) / centerX) * 10;
     const moveY = ((y - centerY) / centerY) * 10;
 
     card.style.setProperty("--magnet-x", `${moveX}px`);
@@ -424,13 +462,18 @@ function App() {
       {showIntro && (
         <div className="intro-overlay">
           <div className="intro-inner">
-            <h1
-              className="intro-main-text"
-              data-text="VINIT PORTFOLIO"
-            >
-              VINIT PORTFOLIO
+            <div className="intro-ring" />
+            <h1 className="intro-main-text" data-text="VINIT SUVARNA">
+              VINIT SUVARNA
             </h1>
-            <p className="intro-subtext">WELCOME TO VINIT&apos;S PORTFOLIO</p>
+            <p className="intro-subtext">
+              Portfolio · Full-Stack Developer · AI &amp; Data Analytics
+            </p>
+            <div className="intro-tags">
+              <span>React &amp; Django</span>
+              <span>AI Chatbots</span>
+              <span>Data Dashboards</span>
+            </div>
           </div>
         </div>
       )}
@@ -497,11 +540,7 @@ function App() {
           >
             Certifications
           </a>
-          <a
-            href="#resume"
-            onClick={handleNavClick("#resume")}
-            className={activeSection === "resume" ? "active" : ""}
-          >
+          <a href={resumeUrl} onClick={handleResumeClick}>
             Resume
           </a>
           <a
@@ -558,7 +597,7 @@ function App() {
               >
                 Certifications
               </a>
-              <a href="#resume" onClick={handleNavClick("#resume")}>
+              <a href={resumeUrl} onClick={handleResumeClick}>
                 Resume
               </a>
               <a href="#contact" onClick={handleNavClick("#contact")}>
@@ -584,6 +623,10 @@ function App() {
               I build full-stack and AI-powered applications using React,
               Django, Python, Streamlit, and modern data analytics tools.
             </p>
+            <p className="hero-availability">
+              Actively seeking internship and entry-level roles in Full-Stack
+              Development, Backend Development, and Data Analytics.
+            </p>
             <div className="hero-actions">
               <button
                 className="btn primary-btn"
@@ -593,12 +636,12 @@ function App() {
               </button>
 
               <a
-                href={`${process.env.PUBLIC_URL}/VINIT-SUVARNA-CV.pdf`}
+                href={resumeUrl}
                 className="btn ghost-btn"
                 target="_blank"
                 rel="noreferrer"
               >
-                Download Resume
+                View Resume
               </a>
             </div>
           </div>
@@ -632,19 +675,40 @@ function App() {
       <section className="section" id="about">
         <div className="section-header">
           <h3 className="section-title">About Me</h3>
-          <p>Who I am and what I do</p>
+          <p>Who I am and what I focus on</p>
         </div>
 
-        <div className="card about-card">
-          <p>
-            I am a B.Voc Data Analytics student specializing in web development
-            and AI-based applications. I build real-world projects using Django,
-            React, Python, and data analytics tools.
-          </p>
-          <p>
-            I enjoy shipping practical solutions, improving user experience, and
-            applying AI for automation and insights across different domains.
-          </p>
+        <div className="card about-card about-layout">
+          <div className="about-text">
+            <p>
+              I am a B.Voc Data Analytics student specializing in web development
+              and AI-based applications. I build real-world projects using
+              Django, React, Python, and data analytics tools.
+            </p>
+            <p>
+              With a strong foundation from my B.Voc program, I&apos;ve built a
+              portfolio of full-stack and AI-powered applications using
+              technologies like React, Django, and Python. I&apos;m actively
+              deepening my expertise in Data Analytics and Web Development,
+              focusing on creating data-driven solutions and improving
+              problem-solving and collaboration through continuous project work.
+            </p>
+            <p className="about-availability">
+              I&apos;m now looking for an internship or entry-level role where I
+              can apply my development skills to contribute to impactful
+              projects, grow with a team, and gain hands-on industry experience
+              in an innovative environment.
+            </p>
+          </div>
+
+          <div className="about-avatar-wrapper">
+            <div className="about-avatar-circle">
+              <span>VS</span>
+            </div>
+            <p className="about-avatar-caption">
+              Avatar placeholder – will be replaced with a profile photo soon.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -655,10 +719,17 @@ function App() {
           <p>Technologies I work with</p>
         </div>
 
-        <div className="skills-grid fade-in">
-          {skills.map((skill) => (
-            <div key={skill} className="skill-pill">
-              {skill}
+        <div className="skills-groups">
+          {skillGroups.map((group) => (
+            <div key={group.category} className="skill-group">
+              <h4 className="skill-group-title">{group.category}</h4>
+              <div className="skills-grid">
+                {group.items.map((skill) => (
+                  <div key={skill} className="skill-pill">
+                    {skill}
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -674,6 +745,7 @@ function App() {
         <div className="projects-grid">
           {projects.map((project, index) => {
             const shapeClass = `shape-${(index % 4) + 1}`;
+            const initial = project.title.charAt(0).toUpperCase();
             return (
               <article
                 key={project.slug}
@@ -683,6 +755,11 @@ function App() {
                 onMouseLeave={handleProjectMouseLeave}
               >
                 <div className="project-card-inner">
+                  <div className="project-header">
+                    <div className="project-icon">{initial}</div>
+                    <span className="project-label">Project</span>
+                  </div>
+
                   <h4>{project.title}</h4>
                   <p className="project-tech">{project.tech}</p>
                   <p className="project-description">
@@ -750,6 +827,20 @@ function App() {
                 Joining as a Research Intern focusing on AI-driven analytics,
                 insights, and fintech solutions.
               </p>
+              <ul className="timeline-bullets">
+                <li>
+                  Exploring AI and data-driven approaches to solve fintech
+                  problems.
+                </li>
+                <li>
+                  Contributing to experiments, analysis, and internal tools
+                  under mentorship.
+                </li>
+                <li>
+                  Strengthening my practical understanding of analytics,
+                  automation, and product thinking.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -797,42 +888,6 @@ function App() {
         </div>
       </section>
 
-      {/* RESUME */}
-      <section className="section" id="resume">
-        <div className="section-header">
-          <h3 className="section-title">Resume</h3>
-          <p>View or download my latest resume</p>
-        </div>
-
-        <div className="card fade-in">
-          <div className="resume-actions">
-            <a
-              href={`${process.env.PUBLIC_URL}/VINIT-SUVARNA-CV.pdf`}
-              className="btn primary-btn"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View Fullscreen
-            </a>
-            <a
-              href={`${process.env.PUBLIC_URL}/VINIT-SUVARNA-CV.pdf`}
-              className="btn ghost-btn"
-              download
-            >
-              Download Resume
-            </a>
-          </div>
-
-          <div className="resume-frame-wrapper">
-            <iframe
-              title="Vinit Suvarna Resume"
-              src={`${process.env.PUBLIC_URL}/VINIT-SUVARNA-CV.pdf`}
-              className="resume-frame"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* CONTACT */}
       <section className="section" id="contact">
         <div className="section-header">
@@ -841,9 +896,10 @@ function App() {
         </div>
 
         <div className="card contact-card">
-          <p>
+          <p className="contact-intro">
             I am open to internships, full-time roles, and collaborative
-            full-stack + AI projects.
+            full-stack + AI projects. Based in Mumbai, India, and happy to work
+            on remote or on-site opportunities.
           </p>
 
           <div className="contact-grid">
@@ -865,6 +921,16 @@ function App() {
                 rel="noreferrer"
               >
                 linkedin.com/in/vinit-suvarna-562076349
+              </a>
+            </div>
+            <div>
+              <h5>GitHub</h5>
+              <a
+                href="https://github.com/VinitSuvarna"
+                target="_blank"
+                rel="noreferrer"
+              >
+                github.com/VinitSuvarna
               </a>
             </div>
             <div>
