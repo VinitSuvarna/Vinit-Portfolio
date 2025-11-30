@@ -101,41 +101,42 @@ const projects = [
     codeLink: "https://github.com/VinitSuvarna/BVOC-Website"
   },
   {
-    title: "Food App",
-    slug: "food-app",
-    tech: "Django, Python, Bootstrap, JavaScript, SQLite, PayPal API",
-    techStack: [
-      "Django",
-      "Python",
-      "Bootstrap",
-      "JavaScript",
-      "SQLite",
-      "PayPal API"
-    ],
-    description:
-      "Multi-vendor food ordering app with restaurants, customers, and admin roles.",
-    overview:
-      "A multi-role food ordering platform where restaurants can manage menus, customers can place orders, and admins can oversee the entire system including payments.",
-    buildSteps: [
-      "Modeled Restaurants, Menu Items, Orders, and Users in Django.",
-      "Implemented restaurant dashboards to manage menus and orders.",
-      "Built customer-facing flows for browsing menus and placing orders.",
-      "Integrated PayPal for secure payment processing.",
-      "Created admin views to monitor orders and user activity."
-    ],
-    challenges: [
-      "Coordinating multiple user roles with different permissions.",
-      "Handling order states (pending, accepted, delivered, cancelled).",
-      "Integrating and testing payment flows with PayPal."
-    ],
-    learnings: [
-      "Understanding of multi-role systems in real-world apps.",
-      "Experience with payment gateway integration.",
-      "Better design for order and status management."
-    ],
-    demoLink: "",
-    codeLink: ""
-  },
+  title: "Food App",
+  slug: "food-app",
+  tech: "Django, Python, Bootstrap, JavaScript, SQLite, PayPal API",
+  techStack: [
+    "Django",
+    "Python",
+    "Bootstrap",
+    "JavaScript",
+    "SQLite",
+    "PayPal API"
+  ],
+  description:
+    "Multi-vendor food ordering app with restaurants, customers, and admin roles.",
+  overview:
+    "A multi-role food ordering platform where restaurants can manage menus, customers can place orders, and admins can oversee the entire system including payments.",
+  buildSteps: [
+    "Modeled Restaurants, Menu Items, Orders, and Users in Django.",
+    "Implemented restaurant dashboards to manage menus and orders.",
+    "Built customer-facing flows for browsing menus and placing orders.",
+    "Integrated PayPal for secure payment processing.",
+    "Created admin views to monitor orders and user activity."
+  ],
+  challenges: [
+    "Coordinating multiple user roles with different permissions.",
+    "Handling order states (pending, accepted, delivered, cancelled).",
+    "Integrating and testing payment flows with PayPal."
+  ],
+  learnings: [
+    "Understanding of multi-role systems in real-world apps.",
+    "Experience with payment gateway integration.",
+    "Better design for order and status management."
+  ],
+  demoLink: "https://food-app-wi5a.onrender.com/",
+  codeLink: "https://github.com/VinitSuvarna/Food-App"
+},
+
   {
     title: "Travel Companion App",
     slug: "travel-companion",
